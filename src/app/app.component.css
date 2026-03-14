@@ -1,0 +1,193 @@
+:host {
+  --bg-dark: #0b131e;
+  --card-bg: #202b3b;
+  --text-white: #ffffff;
+  --text-dim: #9399a2;
+  --accent-blue: #0095ff;
+}
+
+.app-shell {
+  display: flex;
+  background-color: var(--bg-dark);
+  height: 100vh;
+  color: var(--text-white);
+  padding: 30px;
+  box-sizing: border-box;
+  gap: 25px;
+  overflow: hidden;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 85px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0;
+  flex-shrink: 0;
+}
+
+.nav-links {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 35px;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.nav-item.active { color: var(--text-white); }
+.nav-item mat-icon { font-size: 24px; }
+.nav-item span { font-size: 11px; margin-top: 5px; font-weight: 600; }
+
+/* Ensure the dashboard is a column flexbox */
+.main-dashboard {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This creates the gap between top and bottom */
+  height: 100%;
+}
+
+/* Group the Search and Hero at the very top */
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Tighten the gap to save space */
+}
+
+/* Group the Forecast and Air Conditions at the bottom */
+.bottom-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Space between the two bottom cards */
+  margin-top: auto; /* Explicitly pushes this group to the bottom */
+}
+
+/* SEARCH WITH ICON */
+.search-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 15px;
+  color: var(--text-dim);
+  font-size: 20px;
+}
+
+.search-container input {
+  width: 100%;
+  padding: 12px 15px 12px 45px; /* Extra left padding for the icon */
+  background: var(--card-bg);
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.hero-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+}
+
+.city-title { font-size: 48px; margin: 0; }
+.rain-chance { color: var(--text-dim); margin-top: 5px; }
+.big-temp { font-size: 72px; font-weight: 800; margin-top: 10px; }
+.hero-icon img { width: 140px; height: 140px; }
+
+
+/* INFO CARDS */
+.info-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 22px;
+}
+
+.card-header {
+  font-size: 11px;
+  color: var(--text-dim);
+  font-weight: 800;
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* HOURLY GRID */
+.hourly-grid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hour-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border-right: 1px solid #2e3a4e;
+  flex: 1;
+}
+
+.hour-item:last-child { border-right: none; }
+.hour-item .time { font-size: 11px; color: var(--text-dim); }
+.hour-item .hour-temp { font-size: 18px; font-weight: bold; }
+
+/* CONDITIONS GRID */
+.conditions-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cond-item { display: flex; gap: 12px; }
+.cond-item mat-icon { color: var(--text-dim); font-size: 22px; }
+.cond-text label { color: var(--text-dim); font-size: 13px; }
+.cond-text p { font-size: 20px; font-weight: 700; margin: 2px 0 0 0; }
+
+/* FORECAST PANEL */
+.forecast-panel {
+  width: 320px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 25px;
+  flex-shrink: 0;
+}
+
+.forecast-panel h3 { font-size: 12px; color: var(--text-dim); margin-bottom: 20px; }
+
+.forecast-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0;
+  border-bottom: 1px solid #2e3a4e;
+}
+
+.day-label { color: var(--text-dim); width: 50px; font-size: 14px; }
+.forecast-info { display: flex; align-items: center; gap: 8px; flex: 1; justify-content: center;}
+.forecast-info img { width: 35px; }
+.temp-range { font-size: 14px; color: var(--text-dim); }
+.temp-range strong { color: white; margin-right: 5px; }
+
+.see-more-btn {
+  background: var(--accent-blue);
+  color: white;
+  border: none;
+  border-radius: 15px;
+  padding: 4px 12px;
+  font-size: 10px;
+  cursor: pointer;
+}

@@ -1,0 +1,111 @@
+<div class="app-shell" *ngIf="weatherData">
+  <aside class="sidebar">
+    <div class="logo">
+      <mat-icon>cloud_queue</mat-icon>
+    </div>
+    <nav class="nav-links">
+      <div class="nav-item active">
+        <mat-icon>wb_sunny</mat-icon>
+        <span>Weather</span>
+      </div>
+      <div class="nav-item">
+        <mat-icon>list</mat-icon>
+        <span>Cities</span>
+      </div>
+      <div class="nav-item">
+        <mat-icon>map</mat-icon>
+        <span>Map</span>
+      </div>
+      <div class="nav-item">
+        <mat-icon>settings</mat-icon>
+        <span>Settings</span>
+      </div>
+    </nav>
+  </aside>
+
+  <main class="main-dashboard">
+    <div class="top-section">
+      <div class="search-container">
+        <mat-icon class="search-icon">search</mat-icon> <input type="text" [(ngModel)]="city"
+          (keyup.enter)="searchWeather()" placeholder="Search for cities">
+      </div>
+
+      <div class="hero-section">
+        <div class="hero-details">
+          <h1 class="city-title">{{weatherData.current.city}}</h1>
+          <p class="rain-chance">Chance of rain: 0%</p>
+          <div class="big-temp">{{weatherData.current.temperature | number:'1.0-0'}}°</div>
+        </div>
+        <div class="hero-icon">
+          <img [src]="'https://openweathermap.org/img/wn/' + weatherData.current.icon + '@4x.png'" alt="weather">
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-content">
+      <section class="info-card">
+        <div class="card-header">TODAY'S FORECAST</div>
+        <div class="hourly-grid">
+          <div class="hour-item" *ngFor="let i of [1,2,3,4,5,6]">
+            <span class="time">6:00 AM</span>
+            <mat-icon>wb_sunny</mat-icon>
+            <span class="hour-temp">25°</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="info-card">
+        <div class="card-header">
+          <span>AIR CONDITIONS</span>
+          <button class="see-more-btn">See more</button>
+        </div>
+        <div class="conditions-grid">
+          <div class="cond-item">
+            <mat-icon>thermostat</mat-icon>
+            <div class="cond-text">
+              <label>Real Feel</label>
+              <p>{{weatherData.current.temperature}}°</p>
+            </div>
+          </div>
+          <div class="cond-item">
+            <mat-icon>air</mat-icon>
+            <div class="cond-text">
+              <label>Wind</label>
+              <p>{{weatherData.current.wind_speed}} km/h</p>
+            </div>
+          </div>
+          <div class="cond-item">
+            <mat-icon>water_drop</mat-icon>
+            <div class="cond-text">
+              <label>Humidity</label>
+              <p>{{weatherData.current.humidity}}%</p>
+            </div>
+          </div>
+          <div class="cond-item">
+            <mat-icon>wb_sunny</mat-icon>
+            <div class="cond-text">
+              <label>UV Index</label>
+              <p>3</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <aside class="forecast-panel">
+    <h3>7-DAY FORECAST</h3>
+    <div class="forecast-list">
+      <div class="forecast-row" *ngFor="let day of weatherData.forecast; let first = first">
+        <span class="day-label">{{ first ? 'Today' : day.day }}</span>
+        <div class="forecast-info">
+          <img [src]="'https://openweathermap.org/img/wn/' + day.icon + '.png'" alt="icon">
+          <span class="cond-label">{{day.condition}}</span>
+        </div>
+        <span class="temp-range">
+          <strong>{{day.temp_max}}</strong>/{{day.temp_min}}
+        </span>
+      </div>
+    </div>
+  </aside>
+</div>
