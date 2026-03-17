@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class WeatherService {
-  private apiUrl = 'http://localhost:5001/api/weather';
+  private apiUrl = 'https://weather-app-be-zifd.onrender.com/api/weather';
   constructor(private http: HttpClient) {}
 
   getWeather(city: string): Observable<any> {
